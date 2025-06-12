@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}JWC - Tech | Home{% endblock %}
+
+{% block content %}
+
+    <section class="hero">
+        <div class="video-background">
+            <video autoplay muted loop id="heroVideo">
+                <source src="{% static 'APP/img/hero_video.mp4' %}" type="video/mp4">
+                Seu navegador não suporta vídeos HTML5.
+            </video>
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="hero-content container">
+            <h1>Bem-vindo à JWC - Tech</h1>
+            <p>O futuro está aqui. Androides Humanoides que transformam seu dia a dia.</p>
+            <a href="{% url 'cadastro' %}" class="btn-primary">Explore Nossos Modelos</a>
+        </div>
+    </section>
+<br><br>
+    {# NOVO: Hero Section 2 (Foto + Texto) #}
+    <section class="hero-feature-section feature-left-image">
+        <div class="container feature-content">
+            <div class="feature-image">
+                <img src="{% static 'APP/img/hero_feature_1.png' %}" alt="Androide no ambiente doméstico">
+            </div>
+            <div class="feature-text">
+                <h2>Companheirismo Sem Precedentes</h2>
+                <p>Nossos androides humanoides são projetados para se integrar perfeitamente à sua vida, oferecendo apoio emocional e intelectual. Mais do que máquinas, eles são ouvintes atenciosos, companheiros de aprendizado e presenças reconfortantes que se adaptam às suas necessidades e emoções, enriquecendo cada momento do seu dia.</p>
+                <a href="{% url 'lista_produtos' %}" class="btn-secondary">Conheça nossos Companions</a>
+            </div>
+        </div>
+    </section>
+
+    {# NOVO: Hero Section 3 (Texto + Foto) #}
+    <section class="hero-feature-section feature-right-image">
+        <div class="container feature-content">
+            <div class="feature-text">
+                <h2>Tecnologia Avançada ao Seu Serviço</h2>
+                <p>Equipados com a mais recente inteligência artificial e robótica de ponta, nossos androides executam tarefas complexas com facilidade. Desde a gestão inteligente de sua casa até a assistência em projetos pessoais, eles liberam seu tempo para o que realmente importa, garantindo eficiência e precisão em cada ação.</p>
+                <a href="{% url 'lista_produtos' %}" class="btn-secondary">Descubra suas Aplicações</a>
+            </div>
+            <div class="feature-image">
+                <img src="{% static 'APP/img/hero_feature_2.png' %}" alt="Androide realizando tarefas">
+            </div>
+        </div>
+    </section>
+
+    {# NOVO: Hero Section 4 (Foto + Texto) #}
+    <section class="hero-feature-section feature-left-image">
+        <div class="container feature-content">
+            <div class="feature-image">
+                <img src="{% static 'APP/img/hero_feature_3.png' %}" alt="Androide interagindo com dados">
+            </div>
+            <div class="feature-text">
+                <h2>Segurança e Privacidade Absolutas</h2>
+                <p>Sua tranquilidade é nossa prioridade. Nossos androides são construídos com protocolos de segurança cibernética de última geração e sistemas de privacidade robustos. Todas as interações são protegidas, e seus dados permanecem seguros e confidenciais, garantindo um ambiente digital confiável para você e sua família.</p>
+                <a href="{% url 'contato' %}" class="btn-secondary">Fale com um Especialista</a>
+            </div>
+        </div>
+    </section>
+
+    {# NOVO: Carrossel de Parceiros #}
+    <section class="partners-carousel-section">
+        <div class="container">
+            <h2 class="section-title">Nossos Parceiros de Confiança</h2>
+            {% if parceiros %}
+                <div class="carousel-wrapper">
+                    <div class="carousel-content">
+                        {% for parceiro in parceiros %}
+                            <div class="carousel-item">
+                                <a href="{{ parceiro.site_url }}" target="_blank" aria-label="Visitar site do parceiro {{ parceiro.nome_loja }}">
+                                    {% if parceiro.logo %}
+                                        <img src="{{ parceiro.logo.url }}" alt="Logo {{ parceiro.nome_loja }}" class="partner-logo">
+                                    {% else %}
+                                        <img src="{% static 'APP/img/partner_placeholder.png' %}" alt="Logo Padrão" class="partner-logo">
+                                    {% endif %}
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+                <p>Não há parceiros cadastrados para exibição no momento.</p>
+            {% endif %}
+        </div>
+    </section>
+
+{% endblock %}

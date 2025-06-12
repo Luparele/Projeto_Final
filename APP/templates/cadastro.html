@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}JWC - Tech | Cadastro{% endblock %}
+
+{% block content %}
+    <section class="page-header">
+        <div class="container">
+            <h1>Cadastre-se na JWC - Tech</h1>
+        </div>
+    </section>
+
+    <section class="page-content container">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form class="auth-form" method="POST">
+            {% csrf_token %}
+
+            {# Campos do CustomUserCreationForm: username (login), email, password, password2 #}
+            {# O campo 'email' já está incluído aqui com o {{ form.as_p }} #}
+            {{ form.as_p }}
+
+            {# Campos adicionais do modelo Cliente (nome_completo, telefone) #}
+            <label for="nome_completo">Nome Completo:</label>
+            <input type="text" id="nome_completo" name="nome_completo" required value="{{ request.POST.nome_completo|default_if_none:'' }}" class="form-input-style">
+
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="telefone" name="telefone" pattern="[0-9]{2}[0-9]{4,5}[0-9]{4}" placeholder="Ex: 11987654321" value="{{ request.POST.telefone|default_if_none:'' }}" class="form-input-style">
+
+            <button type="submit" class="btn-primary">Cadastrar</button>
+        </form>
+        <p class="auth-link">Já tem uma conta? <a href="{% url 'login' %}">Faça Login</a></p>
+    </section>
+{% endblock %}

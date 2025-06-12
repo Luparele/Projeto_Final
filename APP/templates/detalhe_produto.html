@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}JWC - Tech | {{ produto.nome }}{% endblock %}
+
+{% block content %}
+    <section class="page-header">
+        <div class="container">
+            <h1>{{ produto.nome }}</h1>
+            <p>Conheça cada detalhe do seu futuro companheiro.</p>
+        </div>
+    </section>
+
+    <section class="page-content container product-detail-section">
+        <div class="product-detail-card">
+            <div class="product-detail-image">
+                {% if produto.foto %}
+                    <img src="{{ produto.foto.url }}" alt="{{ produto.nome }}">
+                {% else %}
+                    <img src="{% static 'APP/img/placeholder.jpg' %}" alt="Imagem não disponível"> {# Imagem placeholder se não houver foto #}
+                {% endif %}
+            </div>
+            <div class="product-detail-info">
+                <h2 class="product-detail-name">{{ produto.nome }}</h2>
+                <p class="product-detail-price">Valor: R$ {{ produto.valor|floatformat:2 }}</p>
+                
+                <div class="detail-block">
+                    <h3>História e Design</h3>
+                    <p>{{ produto.historia|linebreaksbr }}</p> {# linebreaksbr converte quebras de linha em <br> #}
+                </div>
+
+                <div class="detail-block">
+                    <h3>Aplicações e Usos</h3>
+                    <p>{{ produto.aplicacao|linebreaksbr }}</p>
+                </div>
+
+                <div class="detail-block">
+                    <h3>Status</h3>
+                    <p>
+                        {% if produto.disponivel %}
+                            <span class="status-available">Disponível para Venda</span>
+                        {% else %}
+                            <span class="status-unavailable">Indisponível no Momento</span>
+                        {% endif %}
+                    </p>
+                </div>
+                
+                <a href="{% url 'lista_parceiros' %}" class="btn-primary detail-contact-btn">Quero o meu Androide!</a> {# LINK ATUALIZADO AQUI #}
+                <a href="{% url 'lista_produtos' %}" class="btn-secondary back-to-products-btn">Voltar para Produtos</a>
+            </div>
+        </div>
+    </section>
+{% endblock %}

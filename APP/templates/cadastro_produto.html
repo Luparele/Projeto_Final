@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}JWC - Tech | Cadastrar Produto{% endblock %}
+
+{% block content %}
+    <section class="page-header">
+        <div class="container">
+            <h1>Cadastrar Novo Androide</h1>
+        </div>
+    </section>
+
+    <section class="page-content container product-form-section"> 
+
+        <form class="auth-form product-form" method="POST" enctype="multipart/form-data"> 
+            {% csrf_token %}
+
+            {# Renderiza os campos do formulário ProdutoForm #}
+            {% if form.errors %}
+                <div class="alert alert-danger">
+                    <strong>Erro!</strong> Por favor, corrija os erros abaixo.
+                </div>
+            {% endif %}
+            {{ form.as_p }}
+
+            <button type="submit" class="btn-primary">Salvar Produto</button>
+        </form>
+    </section>
+{% endblock %}

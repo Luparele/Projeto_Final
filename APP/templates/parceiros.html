@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}JWC - Tech | Nossos Parceiros{% endblock %}
+
+{% block content %}
+    <section class="page-header">
+        <div class="container">
+            <h1>Nossos Parceiros de Venda</h1>
+            <p>Encontre a JWC - Tech nas melhores lojas especializadas.</p>
+        </div>
+    </section>
+
+    <section class="page-content container partner-list-section">
+        {% if parceiros %}
+            <div class="partner-grid">
+                {% for parceiro in parceiros %}
+                    <div class="partner-card">
+                        {% if parceiro.logo %}
+                            <img src="{{ parceiro.logo.url }}" alt="Logo {{ parceiro.nome_loja }}">
+                        {% else %}
+                            <img src="{% static 'APP/img/partner_placeholder.png' %}" alt="Logo Padrão"> {# Imagem placeholder #}
+                        {% endif %}
+                        <div class="partner-info">
+                            <h2>{{ parceiro.nome_loja }}</h2>
+                            {% if parceiro.endereco %}<p><i class="fas fa-map-marker-alt"></i> {{ parceiro.endereco }}</p>{% endif %}
+                            {% if parceiro.telefone %}<p><i class="fas fa-phone"></i> {{ parceiro.telefone }}</p>{% endif %}
+                            {% if parceiro.email %}<p><i class="fas fa-envelope"></i> <a href="mailto:{{ parceiro.email }}">{{ parceiro.email }}</a></p>{% endif %}
+                            {% if parceiro.site_url %}<p><i class="fas fa-external-link-alt"></i> <a href="{{ parceiro.site_url }}" target="_blank">Visitar Site</a></p>{% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-partners">
+                <p>No momento, não temos parceiros cadastrados. Por favor, volte mais tarde para novidades!</p>
+                {# Opcional: Link para um formulário de "Seja Nosso Parceiro" se houver #}
+            </div>
+        {% endif %}
+    </section>
+{% endblock %}

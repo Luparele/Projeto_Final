@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}JWC - Tech | Sobre Nós{% endblock %}
+
+{% block content %}
+    <section class="page-header">
+        <div class="container">
+            <h1>Sobre a JWC - Tech</h1>
+            <p>Inovação e Companheirismo no Coração da Tecnologia Humanoide.</p>
+        </div>
+    </section>
+
+    <section class="page-content container">
+        <div class="about-section">
+            <h2 class="section-title">Nossa História</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>A JWC - Tech nasceu em 2012 de uma visão ousada de seus fundadores: revolucionar o cotidiano através da integração harmoniosa de androides humanoides. Em um mundo cada vez mais conectado, percebemos a lacuna de um companheiro tecnológico que não apenas executasse tarefas, mas que também entendesse e se adaptasse às nuances da vida humana.</p>
+                    <p>Começamos como um pequeno grupo de engenheiros e cientistas apaixonados, operando em uma garagem. Nossas primeiras criações eram protótipos brutos, mas carregavam a promessa de um futuro onde a tecnologia seria uma extensão natural e benéfica para a humanidade. Com anos de pesquisa incansável, desenvolvimento e testes rigorosos, transformamos essa promessa em realidade.</p>
+                    <p>Hoje, a JWC - Tech é reconhecida como líder no design e fabricação de androides humanoides de ponta, com uma equipe global dedicada à excelência e à inovação contínua. Cada androide que desenvolvemos é um testemunho de nosso compromisso com a qualidade, a ética e o avanço tecnológico responsável.</p>
+                </div>
+                <div class="about-image">
+                    <img src="{% static 'APP/img/about_us_image.jpg' %}" alt="Equipe JWC - Tech" class="responsive-img">
+                </div>
+            </div>
+        </div>
+
+        <div class="about-section">
+            <h2 class="section-title">Nossos Objetivos e Valores</h2>
+            <div class="objectives-values-grid">
+                <div class="objective-item">
+                    <h3>Missão</h3>
+                    <p>Capacitar indivíduos e famílias, integrando androides humanoides inteligentes e empáticos em suas vidas, promovendo bem-estar, segurança e uma nova era de companheirismo tecnológico.</p>
+                </div>
+                <div class="objective-item">
+                    <h3>Visão</h3>
+                    <p>Ser a empresa líder global no desenvolvimento e comercialização de soluções robóticas humanoides, moldando o futuro da interação humano-máquina com responsabilidade e inovação.</p>
+                </div>
+                <div class="objective-item">
+                    <h3>Valores</h3>
+                    <ul>
+                        <li><i class="icon fas fa-lightbulb"></i> Inovação Constante</li>
+                        <li><i class="icon fas fa-shield-alt"></i> Ética e Segurança</li>
+                        <li><i class="icon fas fa-heart"></i> Empatia e Companheirismo</li>
+                        <li><i class="icon fas fa-user-friends"></i> Foco no Cliente</li>
+                        <li><i class="icon fas fa-seedling"></i> Sustentabilidade</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="about-section team-section">
+            <h2 class="section-title">Nossa Equipe</h2>
+            <p class="team-intro">Conheça os brilhantes mentes por trás da inovação na JWC - Tech.</p>
+            <div class="team-members-grid">
+                <div class="team-member-card">
+                    <img src="{% static 'APP/img/team_member_1.jpeg' %}" alt="Fundador 1">
+                    <h4>Eduardo Luparele</h4>
+                    <p>Cofundador & CEO</p>
+                    <p class="member-bio">Visionário em IA e robótica, lidera o futuro estratégico da JWC.</p>
+                    <a href="https://github.com/Luparele" target="_blank" aria-label="GitHub de Eduardo Luparele" class="github-link-button team-github-link">
+                        <span class="github-part-1">GitHub</span>
+                        <span class="github-part-2">Luparele</span>
+                    </a>
+                </div>
+                <div class="team-member-card">
+                    <img src="{% static 'APP/img/team_member_2.jpeg' %}" alt="Fundadora 2">
+                    <h4>Andressa Motta</h4>
+                    <p>Cofundadora & CTO</p>
+                    <p class="member-bio">Arquiteta de sistemas neurais e principal desenvolvedora de software.</p>
+                    <a href="https://github.com/dressamotta" target="_blank" aria-label="GitHub de Andressa Motta" class="github-link-button team-github-link">
+                        <span class="github-part-1">GitHub</span>
+                        <span class="github-part-2">dressamotta</span>
+                    </a>
+                </div>
+                <div class="team-member-card">
+                    <img src="{% static 'APP/img/team_member_3.jpeg' %}" alt="Líder de Design 3">
+                    <h4>Iago Michael</h4>
+                    <p>Líder de Design Humanoide</p>
+                    <p class="member-bio">Responsável pela funcionalidade ergonômica de nossos androides.</p>
+                    <a href="https://github.com/promadod" target="_blank" aria-label="GitHub de Iago Michael" class="github-link-button team-github-link">
+                        <span class="github-part-1">GitHub</span>
+                        <span class="github-part-2">promadod</span>
+                    </a>
+                </div>
+                <div class="team-member-card">
+                    <img src="{% static 'APP/img/team_member_4.jpeg' %}" alt="Líder de Design 3">
+                    <h4>Henzo Nogueira</h4>
+                    <p>Líder de Design Humanoide</p>
+                    <p class="member-bio">Responsável pela estética de nossos androides.</p>
+                    <a href="https://github.com/nog" target="_blank" aria-label="GitHub de Henzo Nogueira" class="github-link-button team-github-link">
+                        <span class="github-part-1">GitHub</span>
+                        <span class="github-part-2">Nog</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    </section>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}JWC - Tech | Contato{% endblock %}
+
+{% block content %}
+    <section class="page-header">
+        <div class="container">
+            <h1>Entre em Contato</h1>
+            <p>Envie sua mensagem e retornaremos em breve.</p>
+        </div>
+    </section>
+
+    <section class="page-content container">
+        
+
+        <div class="contact-info">
+            <h3 style="text-align: center;">Fale Conosco</h3>
+            <p style="text-align: center;">Envie sua mensagem e retornaremos em breve.</p>
+            <form class="contact-form" method="POST">
+                {% csrf_token %} {# ESSENCIAL para formulários Django #}
+
+                <label for="nome">Nome Completo:</label>
+                <input type="text" id="nome" name="nome" required value="{{ request.POST.nome|default_if_none:'' }}" class="form-input-style">
+
+                <label for="email">E-mail:</label>
+                <input type="email" id="email" name="email" required value="{{ request.POST.email|default_if_none:'' }}" class="form-input-style">
+
+                <label for="mensagem">Mensagem:</label>
+                <textarea id="mensagem" name="mensagem" rows="5" required class="form-input-style">{{ request.POST.mensagem|default_if_none:'' }}</textarea>
+
+                <button type="submit" class="btn-primary">Enviar Mensagem</button>
+            </form>
+        </div>
+
+        <div class="contact-links">
+            <h3 style="text-align: center;">Canais de Atendimento</h3>
+            <p>
+                <a href="https://wa.me/5521976658035" target="_blank" class="whatsapp-link" ><button class="button-whatsapp">Iniciar conversa no WhatsApp</button></a>
+            </p>
+            <p>
+                <a href="mailto:contato@jwctech.com" class="email-link"><button class="button-mail">Enviar e-mail</button></a>
+            </p>
+            <div class="location-map">
+                <h3 style="text-align: center;">Nossa Localização</h3>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3675.1709855814433!2d-43.180146423778254!3d-22.907063337882782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x997f3bfc0ab8e3%3A0xe2a4c3257308d0f7!2sEdif%C3%ADcio%20Avenida%20Central!5e0!3m2!1spt-BR!2sbr!4v1749245651285!5m2!1spt-BR!2sbr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}JWC - Tech | Nossos Androides{% endblock %}
+
+{% block content %}
+    {# Hero Section Principal (se houver) #}
+    <section class="page-header">
+        <div class="container">
+            <h1>Explore Nossos Androides Humanoides</h1>
+            <p>Descubra a tecnologia que vai transformar seu dia a dia.</p>
+        </div>
+    </section>
+<br><br><br>
+    {# NOVO: Hero Section de Lançamento (Produto de Maior Valor) #}
+    {% if produto_lancamento %}
+        <section class="product-launch-hero feature-left-image"> {# Reutiliza classes para foto+texto #}
+            <div class="container feature-content">
+                <div class="feature-image">
+                    <img src="{{ produto_lancamento.foto.url }}" alt="Lançamento: {{ produto_lancamento.nome }}">
+                </div>
+                <div class="feature-text">
+                    <span class="launch-tag">Lançamento Exclusivo!</span>
+                    <h2>{{ produto_lancamento.nome }}</h2>
+                    <p class="launch-description">{{ produto_lancamento.historia|truncatechars:300 }}</p>
+                    <p class="launch-price">A partir de: R$ {{ produto_lancamento.valor|floatformat:2 }}</p>
+                    <a href="{% url 'detalhe_produto' produto_lancamento.id %}" class="btn-primary" style="max-width: fit-content;">Ver Detalhes do Lançamento</a>
+                </div>
+            </div>
+        </section>
+    {% endif %}
+<br><br><br>
+    {# NOVO: Título para "Outros Produtos" #}
+    {% if outros_produtos %}
+        <section class="section-other-products">
+            <div class="container">
+                <h2 class="section-title">Conheça Nossos Outros Androides</h2>
+            </div>
+        </section>
+    {% endif %}
+
+    {# Grade de Cards de Produtos Existente #}
+    <section class="page-content container product-list-section">
+        {% if outros_produtos %}
+            <div class="product-grid">
+                {% for produto in outros_produtos %}
+                    <div class="product-card">
+                        <img src="{{ produto.foto.url }}" alt="{{ produto.nome }}">
+                        <div class="product-info">
+                            <h2>{{ produto.nome }}</h2>
+                            <p class="product-history">{{ produto.historia|truncatechars:150 }}</p>
+                            <p class="product-price">R$ {{ produto.valor|floatformat:2 }}</p>
+                            <a href="{% url 'detalhe_produto' produto.id %}" class="btn-primary product-detail-btn">Ver Detalhes</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            {% if not produto_lancamento %} {# Mensagem se não houver NENHUM produto #}
+                <div class="no-products">
+                    <p>Nenhum androide disponível no momento. Volte em breve para novidades!</p>
+                    {% if user.is_authenticated and user.is_staff %}
+                        <p><a href="{% url 'cadastrar_produto' %}" class="btn-primary">Cadastrar Primeiro Produto</a></p>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endif %}
+    </section>
+{% endblock %}
