@@ -1,0 +1,1472 @@
+/* Paleta de Cores (Definições de Variáveis CSS) */
+:root {
+    --primary-color: #00CED1; /* Turquesa Médio / Ciano Elétrico */
+    --secondary-color: #27cbe4; /* Azul Violeta / Violeta Elétrico */
+    --dark-neutral: #1A1A2E; /* Azul Marinho Muito Escuro (Fundo) */
+    --light-neutral: #E0FFFF; /* Azul Céu Claro / Branco Gelo (Texto) */
+    --accent-color: #FFD700; /* Dourado / Amarelo Metálico */
+
+    /* Outras variáveis de design */
+    --padding-base: 20px;
+    --border-radius-base: 8px;
+    --transition-speed: 0.3s;
+}
+
+/* Reset Básico e Estilos Globais */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Fonte limpa e moderna */
+    background-color: var(--dark-neutral);
+    color: var(--light-neutral);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Garante que o footer fique no final da página */
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--padding-base);
+}
+
+a {
+    color: white;
+    text-decoration: none;
+    transition: color var(--transition-speed) ease;
+}
+
+a:hover {
+    color: var(--secondary-color);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-color);
+    margin-bottom: 0.8em;
+    font-weight: 600;
+}
+
+p {
+    margin-bottom: 1em;
+}
+
+ul {
+    list-style: none;
+}
+
+/* Botões */
+.btn-primary {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: var(--dark-neutral); /* Texto escuro em botão claro */
+    padding: 12px 25px;
+    border-radius: var(--border-radius-base);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+
+.btn-primary:hover {
+    background-color: var(--secondary-color);
+    color: var(--light-neutral); /* Texto claro em botão escuro */
+    transform: translateY(-2px);
+}
+
+/* Navbar */
+.navbar {
+    background-color: rgba(26, 26, 46, 0.9); /* Fundo semi-transparente para o dark-neutral */
+    padding: var(--padding-base) 0;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar .container {
+    display: flex;
+    justify-content: space-between; /* Mantém espaço entre os grupos de links e o logo */
+    align-items: center;
+}
+
+.navbar .logo {
+    /* Mantém os estilos existentes do logo container */
+    display: inline-block; /* Para controlar largura e altura do link */
+}
+
+.navbar .logo .navbar-logo { /* Estilos para a imagem do logo */
+    height: 30px; /* Ajuste a altura conforme necessário */
+    vertical-align: middle; /* Alinha verticalmente com outros elementos da navbar */
+}
+
+
+.navbar .nav-links {
+    display: flex;
+    margin-right: auto; /* Empurra os links para a esquerda e o auth-links para a direita */
+    margin-left: 50px; /* Um pouco de espaço entre o logo e os links principais */
+}
+
+.navbar .nav-links li {
+    margin-left: 30px;
+}
+
+.navbar .nav-links a {
+    color: var(--light-neutral);
+    font-weight: 500;
+    font-size: 1.1em;
+    padding: 5px 0;
+    position: relative;
+}
+
+.navbar .nav-links a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary-color);
+    left: 0;
+    bottom: 0;
+    transition: width var(--transition-speed) ease;
+}
+
+.navbar .nav-links a:hover::after {
+    width: 100%;
+}
+
+.navbar .nav-links .admin-separator {
+    color: rgba(224, 255, 255, 0.5); /* Cor mais suave para o separador */
+    margin: 0 15px; /* Espaçamento ao redor da barra */
+    font-size: 1.2em; /* Tamanho do separador */
+    pointer-events: none; /* Garante que não seja clicável */
+}
+
+
+/* Main Content Area */
+main {
+    flex: 1; /* Permite que o conteúdo principal ocupe o espaço restante */
+}
+
+/* Hero Section (home.html) */
+.hero {
+    position: relative;
+    width: 100%;
+    height: 80vh; /* Altura da seção de destaque */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--light-neutral);
+    text-align: center;
+    overflow: hidden;
+    /* REMOVIDO: padding-top: 60px; */
+}
+
+.video-background {
+    position: absolute;
+    top: 0; /* Manter top: 0 para o vídeo preencher desde o topo do hero */
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+}
+
+#heroVideo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que o vídeo preencha o container */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Camada escura sobre o vídeo */
+    z-index: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 0.5em;
+    color: var(--primary-color);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content p {
+    font-size: 1.4em;
+    margin-bottom: 1.5em;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Cards Section (home.html) */
+.cards-section {
+    padding: 80px 0;
+    background-color: var(--dark-neutral); /* Mantém o fundo escuro */
+    text-align: center;
+}
+
+.cards-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 60px;
+    color: var(--accent-color);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--padding-base);
+}
+
+.card {
+    background-color: rgba(40, 40, 60, 0.8); /* Fundo ligeiramente mais claro para os cards */
+    border-radius: var(--border-radius-base);
+    padding: var(--padding-base);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    border: 1px solid rgba(0, 206, 209, 0.3); /* Borda sutil primary */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px var(--primary-color); /* Efeito neon sutil */
+}
+
+.card img {
+    max-width: 100%;
+    border-radius: var(--border-radius-base);
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 1.5em;
+    color: var(--light-neutral);
+    margin-bottom: 10px;
+}
+
+.card p {
+    font-size: 1.0em;
+    color: rgba(224, 255, 255, 0.8); /* Texto mais suave */
+}
+
+/* Pages General Styles (sobre.html, contato.html, cadastro.html, login.html) */
+.page-header {
+    background-color: rgba(0, 191, 255, 0.2); /* Cabeçalho das páginas com cor secundária */
+    padding: 0px 0;
+    text-align: center;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    color: var(--light-neutral); /* Texto claro no cabeçalho */
+}
+
+.page-header h1 {
+    font-size: 3em;
+    color: var(--light-neutral); /* Cor do título no cabeçalho da página */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+.page-content {
+    padding: 20px 0 60px 0; /* Padding superior, inferior e laterais */
+    min-height: 50vh; /* Garante um mínimo de altura para o conteúdo */
+}
+
+.page-content h3 {
+    color: var(--primary-color);
+    font-size: 1.8em;
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.page-content ul {
+    margin-left: 20px;
+    list-style-type: disc; /* Bolinhas para listas */
+    color: var(--light-neutral);
+}
+
+.page-content ul li {
+    margin-bottom: 10px;
+}
+
+/* Forms (contato.html, cadastro.html, login.html, cadastro_produto.html) */
+.auth-form, .contact-form, .product-form {
+    background-color: rgba(40, 40, 60, 0.8);
+    padding: var(--padding-base) 40px;
+    border-radius: var(--border-radius-base);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    max-width: 500px;
+    margin: 40px auto;
+    border: 1px solid rgba(0, 206, 209, 0.3);
+}
+
+/* Estilos para Labels de Formulário */
+.auth-form label, .contact-form label, .product-form label {
+    display: block;
+    margin-bottom: 8px;
+    margin-top: 20px;
+    font-weight: 500;
+    color: var(--light-neutral);
+}
+
+/* Estilos para Inputs e Textareas via JS (classe 'form-input-style' adicionada por script.js) */
+.form-input-style {
+    width: calc(100% - 20px); /* Ajusta para padding */
+    padding: 12px 10px;
+    margin-bottom: 20px; /* Adiciona espaçamento entre os campos */
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    background-color: var(--dark-neutral); /* Fundo do input escuro */
+    color: var(--light-neutral);
+    font-size: 1em;
+    outline: none; /* Remove a borda de foco padrão */
+    transition: border-color var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+}
+
+.form-input-style:focus {
+    border-color: var(--secondary-color);
+    box-shadow: 0 0 8px rgba(138, 43, 226, 0.5); /* Efeito neon no foco */
+}
+
+/* Estilo para a textarea do formulário de contato */
+.contact-form textarea.form-input-style,
+.product-form textarea.form-input-style { /* Aplica também à textarea do produto */
+    resize: vertical; /* Permite redimensionar verticalmente */
+    min-height: 100px;
+}
+
+/* Estilos para Mensagens do Django */
+.messages {
+    list-style-type: none;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: var(--border-radius-base);
+    font-weight: bold;
+    text-align: center;
+}
+
+.messages li {
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.3); /* Fundo escuro padrão */
+    color: var(--light-neutral);
+}
+
+.messages .success {
+    background-color: rgba(0, 255, 0, 0.2); /* Verde para sucesso */
+    color: #32CD32; /* LimeGreen */
+    border: 1px solid #32CD32;
+}
+
+.messages .error {
+    background-color: rgba(255, 0, 0, 0.2); /* Vermelho para erro */
+    color: #FF6347; /* Tomato */
+    border: 1px solid #FF6347;
+}
+
+.messages .info {
+    background-color: rgba(0, 191, 255, 0.2); /* Azul para informação */
+    color: #87CEEB; /* SkyBlue */
+    border: 1px solid #87CEEB;
+}
+
+.messages .warning {
+    background-color: rgba(255, 165, 0, 0.2); /* Laranja para aviso */
+    color: #FFA500; /* Orange */
+    border: 1px solid #FFA500;
+}
+
+/* Estilos para Erros de Campo de Formulário gerados pelo Django Forms (ul.errorlist) */
+.auth-form ul.errorlist, .contact-form ul.errorlist, .product-form ul.errorlist {
+    color: #FF6347; /* Vermelho para erros */
+    list-style-type: none;
+    padding: 0;
+    margin-top: -15px; /* Ajusta o espaçamento para ficar mais perto do campo com erro */
+    margin-bottom: 10px;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.auth-form ul.errorlist li, .contact-form ul.errorlist li, .product-form ul.errorlist li {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+}
+
+.auth-link {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.1em;
+}
+
+/* Contact Specific Styles */
+.contact-info, .contact-links {
+    margin-bottom: 40px;
+}
+
+.contact-links p {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 15px;
+    margin: 0 auto;
+}
+
+.contact-links img {
+    width: 30px;
+    height: 30px;
+    margin-right: 10px;
+}
+
+.location-map {
+    margin-top: 40px;
+}
+
+.location-map iframe {
+    width: 100%;
+    height: 400px;
+    border-radius: var(--border-radius-base);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 206, 209, 0.3);
+}
+
+/* --- Estilos para sobre.html --- */
+
+.about-section {
+    margin-bottom: 80px;
+    padding: 20px 0;
+}
+
+.section-title {
+    font-size: 2.8em;
+    color: var(--accent-color);
+    text-align: center;
+    margin-bottom: 40px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section-title::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 80px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+    gap: 40px;
+    align-items: center;
+}
+
+.about-text {
+    flex: 2;
+    min-width: 300px; /* Garante que o texto não fique muito estreito */
+}
+
+.about-text p {
+    font-size: 1.1em;
+    color: rgba(224, 255, 255, 0.9);
+    margin-bottom: 1em;
+}
+
+.about-image {
+    flex: 1;
+    min-width: 280px;
+    text-align: center;
+}
+
+.about-image .responsive-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-base);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 206, 209, 0.3);
+}
+
+/* Objetivos e Valores Grid */
+.objectives-values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: var(--padding-base);
+    text-align: center;
+}
+
+.objective-item {
+    background-color: rgba(40, 40, 60, 0.8);
+    padding: var(--padding-base);
+    border-radius: var(--border-radius-base);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 206, 209, 0.3);
+    transition: transform var(--transition-speed) ease;
+}
+
+.objective-item:hover {
+    transform: translateY(-5px);
+}
+
+.objective-item h3 {
+    color: var(--primary-color);
+    font-size: 1.6em;
+    margin-bottom: 15px;
+}
+
+.objective-item p, .objective-item ul li {
+    color: rgba(224, 255, 255, 0.8);
+    font-size: 1em;
+}
+
+.objective-item ul {
+    list-style: none; /* Remove bolinhas padrão */
+    padding: 0;
+    text-align: left;
+    margin-top: 15px;
+}
+
+.objective-item ul li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-weight: 500;
+}
+
+.objective-item ul li .icon {
+    color: var(--accent-color);
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+/* Seção da Equipe */
+.team-section {
+    text-align: center;
+}
+
+.team-intro {
+    font-size: 1.2em;
+    color: rgba(224, 255, 255, 0.9);
+    margin-bottom: 40px;
+}
+
+.team-members-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--padding-base);
+}
+
+.team-member-card {
+    background-color: rgba(40, 40, 60, 0.8);
+    padding: var(--padding-base);
+    border-radius: var(--border-radius-base);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 206, 209, 0.3);
+    text-align: center;
+    transition: transform var(--transition-speed) ease;
+    display: flex; /* Transforma o card em flexbox para centralizar o conteúdo */
+    flex-direction: column; /* Empilha os itens verticalmente */
+    align-items: center; /* Centraliza os itens horizontalmente (imagem, nome, bio, e botão) */
+}
+
+.team-member-card:hover {
+    transform: translateY(-5px);
+}
+
+.team-member-card img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%; /* Imagem redonda para perfis */
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid var(--primary-color); /* Borda para destaque */
+}
+
+.team-member-card h4 {
+    color: var(--light-neutral);
+    font-size: 1.4em;
+    margin-bottom: 5px;
+}
+
+.team-member-card p {
+    color: rgba(224, 255, 255, 0.7);
+    font-size: 0.95em;
+    margin-bottom: 0.5em;
+}
+
+.team-member-card .member-bio {
+    font-size: 0.9em;
+    font-style: italic;
+    color: rgba(224, 255, 255, 0.6);
+    margin-top: 15px;
+    min-height: 40px; /* Garante altura mínima para a bio */
+}
+
+/* NOVO: Estilos para o Link do GitHub (agora global para ser reutilizado) */
+.github-link-button {
+    display: flex; /* Para alinhar as duas partes lado a lado */
+    border-radius: 5px; /* Bordas arredondadas para o botão completo */
+    overflow: hidden; /* Garante que as bordas arredondadas sejam aplicadas corretamente */
+    text-decoration: none; /* Remove sublinhado padrão */
+    font-weight: bold;
+    font-size: 0.8em; /* Ajuste o tamanho da fonte para o card da equipe */
+    white-space: nowrap; /* Evita quebra de linha */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    margin-top: 15px; /* Espaçamento com a biografia */
+}
+
+.github-link-button:hover {
+    transform: translateY(-2px); /* Efeito de elevação ao passar o mouse */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.github-link-button .github-part-1 {
+    background-color: #333; /* Cor de fundo para "GitHub" - cinza escuro */
+    color: white; /* Cor do texto */
+    padding: 6px 10px; /* Padding ajustado */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.github-link-button .github-part-2 {
+    background-color: #28a745; /* Cor de fundo para "Luparele" - verde do GitHub */
+    color: white; /* Cor do texto */
+    padding: 6px 10px; /* Padding ajustado */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Opcional: Ajuste para o link dentro do card da equipe, se precisar de espaçamento específico */
+.team-member-card .team-github-link {
+    margin-top: 15px; /* Espaçamento com o texto da bio */
+    margin-bottom: 0; /* Remove margem inferior se houver */
+}
+
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+    /* ... (outras regras de responsividade) ... */
+
+    /* Responsividade para Seção da Equipe */
+    .team-members-grid {
+        grid-template-columns: 1fr;
+    }
+    .team-member-card {
+        padding: var(--padding-base);
+    }
+    .github-link-button { /* Ajuste para o botão do github em mobile */
+        font-size: 0.9em;
+        margin: 10px auto; /* Centraliza em mobile */
+    }
+}
+
+/* --- Estilos para produtos.html --- */
+
+.product-list-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--padding-base);
+    margin-top: 40px;
+    justify-content: center; /* Centraliza o grid em telas maiores */
+    max-width: 100%;
+}
+
+.product-card {
+    background-color: rgba(40, 40, 60, 0.8);
+    border-radius: var(--border-radius-base);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 206, 209, 0.3);
+    overflow: hidden; /* Garante que a imagem não transborde */
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    max-width: 350px; /* Define uma largura máxima para o card individual */
+    width: 100%;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px var(--primary-color);
+}
+
+.product-card img {
+    width: 100%;
+    height: 250px; /* Altura fixa para as imagens dos produtos */
+    object-fit: cover; /* Recorta a imagem para cobrir a área, evitando distorções */
+    display: block; /* Remove espaçamento extra abaixo da imagem */
+    border-bottom: 1px solid rgba(0, 206, 209, 0.3);
+}
+
+.product-info {
+    padding: var(--padding-base);
+    text-align: left;
+}
+
+.product-info h2 {
+    font-size: 1.8em;
+    color: var(--light-neutral);
+    margin-bottom: 10px;
+    height: 2.5em; /* Altura fixa para o título se quebrar linha */
+    overflow: hidden;
+}
+
+.product-info .product-history {
+    font-size: 0.95em;
+    color: rgba(224, 255, 255, 0.7);
+    margin-bottom: 15px;
+    min-height: 4em; /* Garante espaço para o resumo */
+    overflow: hidden; /* Oculta texto que transborda */
+}
+
+.product-info .product-price {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    text-align: right; /* Alinha o preço à direita */
+}
+
+.product-info .btn-primary {
+    width: 100%;
+    text-align: center;
+}
+
+.no-products {
+    font-size: 1.5em;
+    color: rgba(224, 255, 255, 0.8);
+    margin-top: 50px;
+}
+
+.no-products .btn-primary {
+    margin-top: 30px;
+}
+
+/* --- Estilos para detalhe_produto.html --- */
+
+.product-detail-section {
+    padding: 60px 0;
+}
+
+.product-detail-card {
+    display: flex;
+    flex-wrap: wrap; /* Permite quebrar linha em telas menores */
+    background-color: rgba(40, 40, 60, 0.8);
+    border-radius: var(--border-radius-base);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(0, 206, 209, 0.3);
+    overflow: hidden;
+    margin-bottom: 50px; /* Espaçamento com o footer se for a única seção */
+}
+
+.product-detail-image {
+    flex: 1;
+    min-width: 300px; /* Garante tamanho mínimo da imagem */
+    max-width: 50%; /* Ocupa até metade da largura */
+    padding: var(--padding-base);
+    text-align: center; /* Centraliza a imagem se ela for menor que o container */
+}
+
+.product-detail-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: var(--border-radius-base);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border: 2px solid var(--primary-color); /* Borda destacada */
+}
+
+.product-detail-info {
+    flex: 1;
+    min-width: 300px; /* Garante tamanho mínimo do texto */
+    padding: var(--padding-base);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.product-detail-name {
+    font-size: 2.5em;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.product-detail-price {
+    font-size: 2em;
+    font-weight: bold;
+    color: var(--primary-color);
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.detail-block {
+    margin-bottom: 30px;
+}
+
+.detail-block h3 {
+    font-size: 1.5em;
+    color: var(--light-neutral);
+    margin-bottom: 10px;
+    border-bottom: 1px dashed rgba(224, 255, 255, 0.3);
+    padding-bottom: 5px;
+}
+
+.detail-block p {
+    color: rgba(224, 255, 255, 0.8);
+    font-size: 1.1em;
+}
+
+.status-available {
+    color: #32CD32; /* LimeGreen */
+    font-weight: bold;
+}
+
+.status-unavailable {
+    color: #FF6347; /* Tomato */
+    font-weight: bold;
+}
+
+.detail-contact-btn {
+    margin-top: 20px;
+    width: auto; /* Para que o botão não ocupe 100% da largura */
+    padding: 15px 30px;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.btn-secondary {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    padding: 12px 25px;
+    border-radius: var(--border-radius-base);
+    text-transform: uppercase;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease, transform var(--transition-speed) ease;
+    cursor: pointer;
+    margin-top: 15px; /* Espaçamento entre botões */
+    text-align: center;
+}
+
+.btn-secondary:hover {
+    background-color: var(--primary-color);
+    color: var(--dark-neutral);
+    transform: translateY(-2px);
+}
+
+.back-to-products-btn {
+    width: auto;
+    font-size: 1em;
+}
+
+/* --- Estilos para parceiros.html --- */
+
+.partner-list-section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.partner-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--padding-base);
+    margin-top: 40px;
+    justify-content: center; /* Centraliza o grid em telas maiores */
+    max-width: 100%;
+}
+
+.partner-card {
+    background-color: rgba(40, 40, 60, 0.8);
+    border-radius: var(--border-radius-base);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 206, 209, 0.3);
+    overflow: hidden;
+    transition: transform var(--transition-speed) ease, box-shadow var(--transition-speed) ease;
+    max-width: 400px; /* Largura máxima para o card de parceiro */
+    width: 100%;
+    text-align: center;
+    padding: var(--padding-base);
+}
+
+.partner-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6), 0 0 15px var(--primary-color);
+}
+
+.partner-card img {
+    max-width: 180px; /* Tamanho máximo para o logo */
+    height: auto;
+    max-height: 100px; /* Altura máxima para o logo */
+    object-fit: contain; /* Garante que o logo caiba sem cortar */
+    margin-bottom: 20px;
+    border-radius: 5px;
+    padding: 10px; /* Espaçamento dentro da borda */
+    background-color: rgba(255, 255, 255, 0.1); /* Fundo claro para logo */
+}
+
+.partner-info h2 {
+    font-size: 1.6em;
+    color: var(--light-neutral);
+    margin-bottom: 15px;
+}
+
+.partner-info p {
+    font-size: 1em;
+    color: rgba(224, 255, 255, 0.8);
+    margin-bottom: 8px;
+    display: flex; /* Para alinhar ícone e texto */
+    align-items: center;
+    justify-content: center; /* Centraliza o conteúdo da linha */
+}
+
+.partner-info p i {
+    margin-right: 10px;
+    color: var(--primary-color);
+    font-size: 1.1em;
+}
+
+.partner-info p a {
+    color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.partner-info p a:hover {
+    color: var(--secondary-color);
+}
+
+.no-partners {
+    font-size: 1.5em;
+    color: rgba(224, 255, 255, 0.8);
+    margin-top: 50px;
+}
+
+/* Footer - REVISADO PARA CENTRALIZAÇÃO */
+footer {
+    background-color: rgba(26, 26, 46, 0.9);
+    color: var(--light-neutral);
+    padding: var(--padding-base) 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+    margin-top: auto;
+    width: 100%; /* Garante que o footer ocupe toda a largura */
+    text-align: center; /* Centraliza o texto do footer e seus elementos inline-block */
+
+    /* Centraliza o conteúdo FLEX internamente (o .container) */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza horizontalmente o conteúdo */
+    justify-content: center; /* Centraliza verticalmente o conteúdo (se houver espaço) */
+}
+
+footer .container {
+    /* O container agora não precisa ser flex, mas precisa ter margin auto para se centralizar */
+    max-width: 1200px;
+    margin: 0 auto; /* Centraliza o container dentro do footer flex */
+    padding: 0 var(--padding-base);
+
+    /* Certifique-se de que o texto dentro do container também está centralizado */
+    text-align: center; /* Importante para o texto no container */
+}
+
+footer p {
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    /* text-align: center; (não precisa mais aqui se o pai for text-align: center) */
+}
+
+
+/* Responsividade Básica */
+@media (max-width: 768px) {
+    .navbar .nav-links {
+        flex-direction: column;
+        align-items: center;
+        margin-top: var(--padding-base);
+    }
+
+    .navbar .nav-links li {
+        margin: 10px 0;
+    }
+
+    .hero {
+        /* REMOVIDO: padding-top para mobile */
+        height: 60vh;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+
+    .hero-content p {
+        font-size: 1.1em;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+
+    .auth-form, .contact-form, .product-form {
+        padding: var(--padding-base);
+        margin: 20px auto;
+    }
+
+    /* Responsividade adicional para "Sobre" */
+    .about-content {
+        flex-direction: column;
+    }
+
+    .about-image {
+        order: -1; /* Move a imagem para cima em telas pequenas */
+        margin-bottom: 30px;
+    }
+
+    .objectives-values-grid, .team-members-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Responsividade para produtos.html */
+    .product-grid {
+        grid-template-columns: 1fr; /* Uma coluna em telas menores */
+    }
+
+    /* Responsividade para detalhe_produto.html */
+    .product-detail-card {
+        flex-direction: column;
+    }
+
+    .product-detail-image, .product-detail-info {
+        max-width: 100%; /* Ocupa 100% da largura em telas pequenas */
+        min-width: unset; /* Remove o min-width para flexibilidade */
+    }
+
+    .product-detail-image {
+        padding-bottom: 0; /* Remove padding extra entre imagem e info */
+    }
+
+    /* Responsividade da Navbar (ajustes) */
+    .navbar .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .navbar .nav-links, .navbar .auth-links {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        margin-left: 0;
+        margin-top: 15px;
+    }
+
+    .navbar .nav-links li, .navbar .auth-links li {
+        margin: 8px 0;
+    }
+
+    .navbar .nav-links .admin-separator {
+        display: none;
+    }
+    
+    .navbar .logo {
+        margin-bottom: 15px;
+    }
+
+    .navbar .auth-links {
+        margin-top: 20px;
+        border-top: 1px solid rgba(224, 255, 255, 0.1);
+        padding-top: 15px;
+    }
+
+    .navbar .auth-links .welcome-message {
+        margin-bottom: 0;
+    }
+
+    .navbar .auth-links .user-info-group,
+    .navbar .auth-links .auth-group {
+        flex-direction: row;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        justify-content: flex-start;
+    }
+}
+
+/* From Uiverse.io by adamgiebl */ 
+.button-whatsapp {
+    --green: #1BFD9C;
+    font-size: 15px;
+    padding: 0.7em 2.7em;
+    letter-spacing: 0.06em;
+    position: relative;
+    font-family: inherit;
+    border-radius: 0.6em;
+    overflow: hidden;
+    transition: all 0.3s;
+    line-height: 1.4em;
+    border: 2px solid var(--green);
+    background: linear-gradient(to right, rgba(27, 253, 156, 0.1) 1%, transparent 40%,transparent 60% , rgba(27, 253, 156, 0.1) 100%);
+    color: var(--green);
+    box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.4), 0 0 9px 3px rgba(27, 253, 156, 0.1);
+  }
+  
+  .button-whatsapp:hover {
+    color: #82ffc9;
+    box-shadow: inset 0 0 10px rgba(27, 253, 156, 0.6), 0 0 9px 3px rgba(27, 253, 156, 0.2);
+  }
+  
+  .button-whatsapp:before {
+    content: "";
+    position: absolute;
+    left: -4em;
+    width: 4em;
+    height: 100%;
+    top: 0;
+    transition: transform .4s ease-in-out;
+    background: linear-gradient(to right, transparent 1%, rgba(27, 253, 156, 0.1) 40%,rgba(27, 253, 156, 0.1) 60% , transparent 100%);
+  }
+  
+  .button-whatsapp:hover:before {
+    transform: translateX(15em);
+  }
+
+  .button-mail {
+    --blue: #408df8;
+    font-size: 15px;
+    padding: 0.7em 2.7em;
+    letter-spacing: 0.06em;
+    position: relative;
+    font-family: inherit;
+    border-radius: 0.6em;
+    overflow: hidden;
+    transition: all 0.3s;
+    line-height: 1.4em;
+    border: 2px solid var(--blue);
+    background: linear-gradient(to right, rgba(27, 163, 253, 0.1) 1%, transparent 40%,transparent 60% , rgba(27, 234, 253, 0.1) 100%);
+    color: var(--blue);
+    box-shadow: inset 0 0 10px rgba(2, 92, 176, 0.4), 0 0 9px 3px rgba(27, 253, 156, 0.1);
+  }
+  
+  .button-mail:hover {
+    color: #8940f6;
+    box-shadow: inset 0 0 10px rgba(116, 6, 213, 0.6), 0 0 9px 3px rgba(46, 42, 50, 0.2);
+  }
+  
+  .button-mail:before {
+    content: "";
+    position: absolute;
+    left: -4em;
+    width: 4em;
+    height: 100%;
+    top: 0;
+    transition: transform .4s ease-in-out;
+    background: linear-gradient(to right, transparent 1%, rgba(27, 253, 156, 0.1) 40%,rgba(27, 253, 156, 0.1) 60% , transparent 100%);
+  }
+  
+  .button-mail:hover:before {
+    transform: translateX(15em);
+  }
+
+/* From Uiverse.io by david-mohseni */ 
+.wrapper {
+    display: inline-flex;
+    list-style: none;
+    height: 120px;
+    width: 100%;
+    padding-top: 40px;
+    font-family: "Poppins", sans-serif;
+    justify-content: center;
+  }
+  
+  .wrapper .icon {
+    position: relative;
+    background:  #1A1A2E;
+    border-radius: 50%;
+    margin: 10px;
+    width: 50px;
+    height: 50px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .tooltip {
+    position: absolute;
+    top: 0;
+    font-size: 14px;
+    background: #fff;
+    color: #fff;
+    padding: 5px 8px;
+    border-radius: 5px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .tooltip::before {
+    position: absolute;
+    content: "";
+    height: 8px;
+    width: 8px;
+    background: #fff;
+    bottom: -3px;
+    left: 50%;
+    transform: translate(-50%) rotate(45deg);
+    transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+  
+  .wrapper .icon:hover .tooltip {
+    top: -45px;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+  
+  .wrapper .icon:hover span,
+  .wrapper .icon:hover .tooltip {
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  .wrapper .facebook:hover,
+  .wrapper .facebook:hover .tooltip,
+  .wrapper .facebook:hover .tooltip::before {
+    background: #1877f2;
+    color: #fff;
+  }
+  
+  .wrapper .instagram:hover,
+  .wrapper .instagram:hover .tooltip,
+  .wrapper .instagram:hover .tooltip::before {
+    background: #e4405f;
+    color: #fff;
+  }
+  
+/* --- NOVAS SEÇÕES HERO NA HOME --- */
+
+.hero-feature-section {
+    padding: 05px 0; /* Espaçamento vertical para cada seção */
+    background-color: var(--dark-neutral); /* Fundo escuro */
+    text-align: center; /* Centraliza o conteúdo por padrão */
+    overflow: hidden; /* Garante que nada transborde */
+    /* REMOVIDO: border-top: 1px solid rgba(0, 206, 209, 0.1);  Linha divisória sutil */
+}
+
+.feature-content {
+    display: flex;
+    align-items: center; /* Alinha verticalmente imagem e texto */
+    gap: 20px; /* Espaçamento entre imagem e texto */
+    flex-wrap: wrap; /* Permite que os itens quebrem linha em telas menores */
+    justify-content: center; /* Centraliza os itens quando há quebra de linha */
+}
+
+.feature-image {
+    flex: 1; /* Ocupa espaço flexível */
+    min-width: 350px; /* Largura mínima para a imagem */
+    text-align: center; /* Centraliza a imagem dentro de seu contêiner */
+}
+
+.feature-image img {
+    max-width: 100%;
+    max-height: 400px;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--border-radius-base);
+    /* REMOVIDO: box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6); */
+    /* REMOVIDO: border: 2px solid var(--primary-color); */
+    transition: transform 0.5s ease-out; /* Efeito de zoom sutil */
+}
+
+.feature-image img:hover {
+    transform: scale(1.02);
+}
+
+.feature-text {
+    flex: 1; /* Ocupa espaço flexível */
+    min-width: 350px; /* Largura mínima para o texto */
+    text-align: left; /* Texto alinhado à esquerda */
+}
+
+.feature-text h2 {
+    font-size: 2.8em;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+    line-height: 1.2;
+}
+
+.feature-text p {
+    font-size: 1.2em;
+    color: rgba(224, 255, 255, 0.85);
+    margin-bottom: 30px;
+}
+
+/* Variação: Texto + Foto (inverte a ordem visual) */
+.feature-right-image .feature-image {
+    order: 2; /* Move a imagem para a direita */
+}
+
+.feature-right-image .feature-text {
+    order: 1; /* Move o texto para a esquerda */
+}
+
+.feature-right-image .feature-text {
+    text-align: right; /* Alinha o texto à direita para esta variação */
+}
+
+.feature-right-image .feature-text .btn-secondary {
+    margin-left: auto; /* Centraliza o botão se o texto for à direita */
+}
+
+
+/* Responsividade para as novas seções Hero */
+@media (max-width: 992px) { /* Em tablets, empilha os itens */
+    .feature-content {
+        flex-direction: column;
+        gap: 40px;
+    }
+
+    .feature-left-image .feature-image,
+    .feature-right-image .feature-image {
+        order: unset; /* Reseta a ordem para a imagem ficar sempre no topo em mobile */
+    }
+
+    .feature-text {
+        text-align: center; /* Centraliza o texto em mobile */
+    }
+
+    .feature-text h2 {
+        font-size: 2.2em;
+    }
+
+    .feature-text p {
+        font-size: 1.1em;
+    }
+
+    .feature-right-image .feature-text .btn-secondary {
+        margin: 0 auto; /* Centraliza o botão em mobile */
+    }
+}
+
+@media (max-width: 600px) { /* Para telefones pequenos, mais compactação */
+    .hero-feature-section {
+        padding: 50px 0;
+    }
+    .feature-image, .feature-text {
+        min-width: unset; /* Permite que ocupem a largura total */
+    }
+}
+
+/* --- Estilos para o Carrossel de Parceiros na Home --- */
+.partners-carousel-section {
+    background-color: var(--dark-neutral);
+    padding: 60px 0;
+    text-align: center;
+    border-top: 1px solid rgba(0, 206, 209, 0.1);
+}
+
+.partners-carousel-section .section-title {
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    color: var(--accent-color);
+}
+
+.carousel-wrapper {
+    overflow: hidden; /* Esconde o conteúdo que está fora da área visível */
+    width: 100%;
+    position: relative;
+    padding: 20px 0; /* Espaçamento vertical para os logos */
+}
+
+.carousel-content {
+    display: flex;
+    white-space: nowrap; /* Impede que os itens quebrem linha */
+    will-change: transform; /* Otimização para animação */
+    animation: none; /* Remove animação CSS para controlar via JS */
+}
+
+.carousel-item {
+    display: inline-flex; /* Garante que os itens fiquem lado a lado */
+    flex-shrink: 0; /* Impede que os itens encolham */
+    justify-content: center;
+    align-items: center;
+    width: 200px; /* Largura padrão para cada item do carrossel */
+    margin: 0 15px; /* Espaçamento entre os logos */
+}
+
+.carousel-item a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%; /* Garante que o link ocupe o item inteiro */
+}
+
+.carousel-item .partner-logo {
+    max-width: 150px; /* Largura máxima para o logo do parceiro */
+    height: 80px; /* ALTURA FIXA para padronizar o tamanho dos logos */
+    object-fit: contain; /* Garante que o logo caiba no espaço sem distorção */
+    filter: grayscale(100%) opacity(0.6); /* Efeito para logos de parceiros */
+    transition: filter 0.3s ease;
+}
+
+.carousel-item .partner-logo:hover {
+    filter: grayscale(0%) opacity(1); /* Tira o efeito no hover */
+}
+
+/* Responsividade para o Carrossel */
+@media (max-width: 768px) {
+    .partners-carousel-section {
+        padding: 40px 0;
+    }
+    .carousel-item {
+        width: 150px; /* Itens menores em telas menores */
+        margin: 0 10px;
+    }
+    .carousel-item .partner-logo {
+        max-width: 120px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .partners-carousel-section .section-title {
+        font-size: 2em;
+    }
+    .carousel-item {
+        width: 120px; /* Ainda menores em telas muito pequenas */
+        margin: 0 8px;
+    }
+    .carousel-item .partner-logo {
+        max-width: 100px;
+        height: 50px;
+    }
+}
