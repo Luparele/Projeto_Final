@@ -20,7 +20,7 @@
                     <li><a href="{% url 'lista_produtos' %}">Produtos</a></li>
                     <li><a href="{% url 'sobre' %}">Sobre</a></li>
                     <li><a href="{% url 'contato' %}">Contato</a></li>
-                    <li><a href="{% url 'lista_parceiros' %}">Parceiros</a></li>
+                    <!-- <li><a href="{% url 'lista_parceiros' %}">Parceiros</a></li> -->
                     
                     {# Área Admin #}
                     {% if user.is_authenticated and user.is_staff %}
